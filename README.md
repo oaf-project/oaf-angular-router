@@ -69,7 +69,7 @@ wrapRouter(router, isNavigationEndEvent, settings);
 ```
 
 ### A note on focus outlines
-You may see focus outlines around your `h1` elements (or elsewhere, per `primaryFocusTarget`) when using Oaf angular Router.
+You may see focus outlines around your `h1` elements (or elsewhere, per `primaryFocusTarget`) when using Oaf Angular Router.
 
 You might be tempted to remove these focus outlines with something like the following:
 ```css
