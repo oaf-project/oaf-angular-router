@@ -30,7 +30,7 @@ yarn add oaf-angular-router
 npm install oaf-angular-router
 ```
 
-## Usage
+## Basic Usage
 
 `app.module.ts`:
 
@@ -42,6 +42,26 @@ export class AppModule {
 +    wrapRouter(router);
   }
 }
+```
+
+## Advanced Usage
+
+```typescript
+const settings = {
+  announcementsDivId: "announcements",
+  primaryFocusTarget: "main h1, [role=main] h1",
+  // This assumes you're setting the document title via some other means.
+  // If you're not, you should return a unique and descriptive page title for each page
+  // from this function and set `setPageTitle` to true.
+  documentTitle: (location: Navigation) => new Promise(resolve => setTimeout(() => resolve(document.title))),
+  // BYO localization
+  navigationMessage: (title: string, location: Navigation): string => `Navigated to ${title}.`,
+  shouldHandleAction: (previousLocation: Navigation, nextLocation: Navigation) => true,
+  announcePageNavigation: true,
+  setPageTitle: false,
+};
+
+wrapRouter(router, settings);
 ```
 
 ### A note on focus outlines
