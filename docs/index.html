@@ -70,7 +70,7 @@
 					<a href="https://david-dm.org/oaf-project/oaf-angular-router?type=dev"><img src="https://david-dm.org/oaf-project/oaf-angular-router/dev-status.svg" alt="devDependencies Status"></a>
 				<a href="https://david-dm.org/oaf-project/oaf-angular-router?type=peer"><img src="https://david-dm.org/oaf-project/oaf-angular-router/peer-status.svg" alt="peerDependencies Status"></a></p>
 				<h1 id="oaf-angular-router">Oaf Angular Router</h1>
-				<p>An accessible wrapper for Angular&#39;s router.</p>
+				<p>An accessible wrapper for <a href="https://angular.io/guide/router">Angular&#39;s Router</a>.</p>
 				<h2 id="features">Features</h2>
 				<ul>
 					<li>Reset scroll and focus after page navigation</li>
@@ -79,15 +79,39 @@
 					<li>Hash fragment support</li>
 				</ul>
 				<p>In lieu of more details, see <a href="https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features">Oaf React Router</a> for now. The features are basically the same, with the caveat that Oaf Angular Router doesn&#39;t currently support focus and scroll restoration after POP navigation.</p>
-				<h2 id="usage">Usage</h2>
+				<h2 id="installation">Installation</h2>
+				<pre><code class="language-sh"><span class="hljs-comment"># yarn</span>
+yarn add oaf-angular-router
+
+<span class="hljs-comment"># npm</span>
+npm install oaf-angular-router</code></pre>
+				<h2 id="basic-usage">Basic Usage</h2>
 				<p><code>app.module.ts</code>:</p>
 				<pre><code class="language-diff"><span class="hljs-addition">+ import { wrapRouter } from "oaf-angular-router";</span>
 
 export class AppModule {
   constructor(router: Router) {
-<span class="hljs-addition">+    wrapRouter(router);</span>
+<span class="hljs-addition">+    // HACK instanceof doesn't work across require() boundary</span>
+<span class="hljs-addition">+    const isNavigationEndEvent = (event: Event) =&gt; event instanceof NavigationEnd;</span>
+<span class="hljs-addition">+    wrapRouter(router, isNavigationEndEvent);</span>
   }
 }</code></pre>
+				<h2 id="advanced-usage">Advanced Usage</h2>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> settings = {
+  announcementsDivId: <span class="hljs-string">"announcements"</span>,
+  primaryFocusTarget: <span class="hljs-string">"main h1, [role=main] h1"</span>,
+  <span class="hljs-comment">// This assumes you're setting the document title via some other means.</span>
+  <span class="hljs-comment">// If you're not, you should return a unique and descriptive page title for each page</span>
+  <span class="hljs-comment">// from this function and set `setPageTitle` to true.</span>
+  documentTitle: <span class="hljs-function">(<span class="hljs-params">location: Navigation</span>) =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> resolve(<span class="hljs-built_in">document</span>.title))),
+  <span class="hljs-comment">// BYO localization</span>
+  navigationMessage: (title: <span class="hljs-built_in">string</span>, location: Navigation): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> <span class="hljs-string">`Navigated to <span class="hljs-subst">${title}</span>.`</span>,
+  shouldHandleAction: <span class="hljs-function">(<span class="hljs-params">previousLocation: Navigation, nextLocation: Navigation</span>) =&gt;</span> <span class="hljs-literal">true</span>,
+  announcePageNavigation: <span class="hljs-literal">true</span>,
+  setPageTitle: <span class="hljs-literal">false</span>,
+};
+
+wrapRouter(router, isNavigationEndEvent, settings);</code></pre>
 				<h3 id="a-note-on-focus-outlines">A note on focus outlines</h3>
 				<p>You may see focus outlines around your <code>h1</code> elements (or elsewhere, per <code>primaryFocusTarget</code>) when using Oaf angular Router.</p>
 				<p>You might be tempted to remove these focus outlines with something like the following:</p>
