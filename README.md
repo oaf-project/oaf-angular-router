@@ -9,7 +9,7 @@
 
 
 # Oaf Angular Router
-An accessible wrapper for Angular's router.
+An accessible wrapper for [Angular's Router](https://angular.io/guide/router).
 
 ## Features
 
