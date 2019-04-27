@@ -39,7 +39,9 @@ npm install oaf-angular-router
 
 export class AppModule {
   constructor(router: Router) {
-+    wrapRouter(router);
++    // HACK instanceof doesn't work across require() boundary
++    const isNavigationEndEvent = (event: Event) => event instanceof NavigationEnd;
++    wrapRouter(router, isNavigationEndEvent);
   }
 }
 ```
@@ -61,7 +63,7 @@ const settings = {
   setPageTitle: false,
 };
 
-wrapRouter(router, settings);
+wrapRouter(router, isNavigationEndEvent, settings);
 ```
 
 ### A note on focus outlines

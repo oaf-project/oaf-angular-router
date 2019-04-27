@@ -1,4 +1,4 @@
-import { Navigation, NavigationEnd, Router } from "@angular/router";
+import { Event, Navigation, Router } from "@angular/router";
 import {
   createOafRouter,
   defaultSettings as oafRoutingDefaultSettings,
@@ -17,6 +17,8 @@ export const defaultSettings: RouterSettings<Navigation> = {
 
 export const wrapRouter = (
   router: Router,
+  // HACK instanceof doesn't work across require() boundary
+  isNavigationEndEvent: (event: Event) => boolean,
   settingsOverrides?: Partial<RouterSettings<Navigation>>,
 ): (() => void) => {
   const settings: RouterSettings<Navigation> = {
@@ -28,10 +30,10 @@ export const wrapRouter = (
     ...settingsOverrides,
   };
 
-  const oafRouter = createOafRouter<Navigation>(
-    settings,
-    navigation => navigation.extractedUrl.fragment || "",
-  );
+  const oafRouter = createOafRouter<Navigation>(settings, navigation => {
+    const fragment = (navigation.finalUrl || navigation.extractedUrl).fragment;
+    return fragment !== null ? `#${fragment}` : "";
+  });
 
   const initialNavigation = router.getCurrentNavigation();
   if (initialNavigation !== null) {
@@ -39,7 +41,7 @@ export const wrapRouter = (
   }
 
   const subscription = router.events.subscribe(event => {
-    if (event instanceof NavigationEnd) {
+    if (isNavigationEndEvent(event)) {
       const navigation = router.getCurrentNavigation();
       const previousNavigation =
         navigation !== null ? navigation.previousNavigation : null;
