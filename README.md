@@ -11,6 +11,8 @@
 # Oaf Angular Router
 An accessible wrapper for [Angular's Router](https://angular.io/guide/router).
 
+Documentation at https://oaf-project.github.io/oaf-angular-router/
+
 ## Features
 
 * Reset scroll and focus after page navigation
