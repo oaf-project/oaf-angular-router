@@ -20,6 +20,16 @@ An accessible wrapper for Angular's router.
 
 In lieu of more details, see [Oaf React Router](https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features) for now. The features are basically the same, with the caveat that Oaf Angular Router doesn't currently support focus and scroll restoration after POP navigation.
 
+## Installation
+
+```sh
+# yarn
+yarn add oaf-angular-router
+
+# npm
+npm install oaf-angular-router
+```
+
 ## Usage
 
 `app.module.ts`:
