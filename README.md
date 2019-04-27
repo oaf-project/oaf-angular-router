@@ -35,6 +35,8 @@ npm install oaf-angular-router
 `app.module.ts`:
 
 ```diff
+- import { Router } from '@angular/router';
++ import { Event, Router, NavigationEnd } from '@angular/router';
 + import { wrapRouter } from "oaf-angular-router";
 
 export class AppModule {
