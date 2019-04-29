@@ -20,7 +20,7 @@ Documentation at https://oaf-project.github.io/oaf-angular-router/
 * Announce navigation to users of screen readers
 * Hash fragment support
 
-In lieu of more details, see [Oaf React Router](https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features) for now. The features are basically the same, with the caveat that Oaf Angular Router doesn't currently support focus and scroll restoration after POP navigation.
+In lieu of more details, see [Oaf React Router](https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features) for now. The features are basically the same, with the caveat that Oaf Angular Router doesn't currently support focus and scroll restoration after POP navigation (see [issue #3](https://github.com/oaf-project/oaf-angular-router/issues/3)).
 
 ## Installation
 
