@@ -71,6 +71,7 @@
 				<a href="https://david-dm.org/oaf-project/oaf-angular-router?type=peer"><img src="https://david-dm.org/oaf-project/oaf-angular-router/peer-status.svg" alt="peerDependencies Status"></a></p>
 				<h1 id="oaf-angular-router">Oaf Angular Router</h1>
 				<p>An accessible wrapper for <a href="https://angular.io/guide/router">Angular&#39;s Router</a>.</p>
+				<p>Documentation at <a href="https://oaf-project.github.io/oaf-angular-router/">https://oaf-project.github.io/oaf-angular-router/</a></p>
 				<h2 id="features">Features</h2>
 				<ul>
 					<li>Reset scroll and focus after page navigation</li>
@@ -78,7 +79,7 @@
 					<li>Announce navigation to users of screen readers</li>
 					<li>Hash fragment support</li>
 				</ul>
-				<p>In lieu of more details, see <a href="https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features">Oaf React Router</a> for now. The features are basically the same, with the caveat that Oaf Angular Router doesn&#39;t currently support focus and scroll restoration after POP navigation.</p>
+				<p>In lieu of more details, see <a href="https://github.com/oaf-project/oaf-react-router/blob/master/README.md#features">Oaf React Router</a> for now. The features are basically the same, with the caveat that Oaf Angular Router doesn&#39;t currently support focus and scroll restoration after POP navigation (see <a href="https://github.com/oaf-project/oaf-angular-router/issues/3">issue #3</a>).</p>
 				<h2 id="installation">Installation</h2>
 				<pre><code class="language-sh"><span class="hljs-comment"># yarn</span>
 yarn add oaf-angular-router
@@ -87,7 +88,9 @@ yarn add oaf-angular-router
 npm install oaf-angular-router</code></pre>
 				<h2 id="basic-usage">Basic Usage</h2>
 				<p><code>app.module.ts</code>:</p>
-				<pre><code class="language-diff"><span class="hljs-addition">+ import { wrapRouter } from "oaf-angular-router";</span>
+				<pre><code class="language-diff"><span class="hljs-deletion">- import { Router } from '@angular/router';</span>
+<span class="hljs-addition">+ import { Event, Router, NavigationEnd } from '@angular/router';</span>
+<span class="hljs-addition">+ import { wrapRouter } from "oaf-angular-router";</span>
 
 export class AppModule {
   constructor(router: Router) {
@@ -113,7 +116,7 @@ export class AppModule {
 
 wrapRouter(router, isNavigationEndEvent, settings);</code></pre>
 				<h3 id="a-note-on-focus-outlines">A note on focus outlines</h3>
-				<p>You may see focus outlines around your <code>h1</code> elements (or elsewhere, per <code>primaryFocusTarget</code>) when using Oaf angular Router.</p>
+				<p>You may see focus outlines around your <code>h1</code> elements (or elsewhere, per <code>primaryFocusTarget</code>) when using Oaf Angular Router.</p>
 				<p>You might be tempted to remove these focus outlines with something like the following:</p>
 				<pre><code class="language-css"><span class="hljs-selector-attr">[tabindex="-1"]</span><span class="hljs-selector-pseudo">:focus</span> {
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
