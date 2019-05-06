@@ -13,6 +13,10 @@ export { RouterSettings } from "oaf-routing";
 
 export const defaultSettings: RouterSettings<Navigation> = {
   ...oafRoutingDefaultSettings,
+  // TODO support pop page state restoration.
+  restorePageStateOnPop: false,
+  // We're not restoring page state ourselves so leave this enabled.
+  disableAutoScrollRestoration: false,
 };
 
 export const wrapRouter = (
@@ -23,10 +27,6 @@ export const wrapRouter = (
 ): (() => void) => {
   const settings: RouterSettings<Navigation> = {
     ...defaultSettings,
-    // TODO support pop page state restoration.
-    restorePageStateOnPop: false,
-    // We're not restoring page state ourselves so leave this enabled.
-    disableAutoScrollRestoration: false,
     ...settingsOverrides,
   };
 
