@@ -8,23 +8,23 @@
     "url": "https://github.com/oaf-project/oaf-angular-router.git"
   },
   "devDependencies": {
-    "@angular/router": "^7.2.14",
-    "prettier": "^1.17.0",
+    "@angular/router": "^7.2.15",
+    "prettier": "^1.17.1",
     "prettylint": "^1.0.0",
-    "rxjs": "^6.5.1",
+    "rxjs": "^6.5.2",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^5.5.2",
     "tslint-sonarts": "^1.9.0",
-    "type-coverage": "^2.0.0",
+    "type-coverage": "^2.0.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "oaf-routing": "^1.0.4"
+    "oaf-routing": "^1.1.0"
   },
   "peerDependencies": {
-    "@angular/router": "^7.2.14"
+    "@angular/router": "^7.2.15"
   },
   "scripts": {
     "build": "tsc",
