@@ -35,24 +35,20 @@ export const wrapRouter = (
     return fragment !== null ? `#${fragment}` : "";
   });
 
-  const initialNavigation = router.getCurrentNavigation();
-  if (initialNavigation !== null) {
-    oafRouter.handleFirstPageLoad(initialNavigation);
-  }
-
   const subscription = router.events.subscribe(event => {
     if (isNavigationEndEvent(event)) {
       const navigation = router.getCurrentNavigation();
-      const previousNavigation =
-        navigation !== null ? navigation.previousNavigation : null;
-
-      if (navigation !== null && previousNavigation !== null) {
-        oafRouter.handleLocationChanged(
-          previousNavigation,
-          navigation,
-          undefined,
-          undefined,
-        );
+      if (navigation !== null) {
+        if (navigation.previousNavigation === null) {
+          oafRouter.handleFirstPageLoad(navigation);
+        } else {
+          oafRouter.handleLocationChanged(
+            navigation.previousNavigation,
+            navigation,
+            undefined,
+            undefined,
+          );
+        }
       }
     }
   });
