@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@angular/router": "^8.2.14",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "prettylint": "^1.0.0",
     "rxjs": "^6.5.2",
     "tslint": "^5.18.0",
