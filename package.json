@@ -11,7 +11,7 @@
     "@angular/router": "^8.2.14",
     "prettier": "^1.18.2",
     "prettylint": "^1.0.0",
-    "rxjs": "^6.5.2",
+    "rxjs": "^6.5.4",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.1",
