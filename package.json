@@ -8,7 +8,7 @@
     "url": "https://github.com/oaf-project/oaf-angular-router.git"
   },
   "devDependencies": {
-    "@angular/router": "^8.0.3",
+    "@angular/router": "^8.2.14",
     "prettier": "^1.18.2",
     "prettylint": "^1.0.0",
     "rxjs": "^6.5.2",
@@ -24,7 +24,7 @@
     "oaf-routing": "^3.0.0"
   },
   "peerDependencies": {
-    "@angular/router": "^8.0.3"
+    "@angular/router": "^8.2.14"
   },
   "scripts": {
     "build": "tsc",
