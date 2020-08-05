@@ -21,7 +21,7 @@
     "typescript": "^3.8.2"
   },
   "dependencies": {
-    "oaf-routing": "^4.0.0"
+    "oaf-routing": "^4.0.1"
   },
   "peerDependencies": {
     "@angular/router": "^8.2.14"
