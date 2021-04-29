@@ -1,0 +1,50 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: type-coverage
+    versions:
+    - 2.14.9
+    - 2.15.0
+    - 2.15.1
+    - 2.16.0
+    - 2.16.1
+    - 2.16.2
+    - 2.16.3
+    - 2.17.0
+    - 2.17.2
+    - 2.17.3
+  - dependency-name: "@angular/router"
+    versions:
+    - 11.1.1
+    - 11.1.2
+    - 11.2.0
+    - 11.2.1
+    - 11.2.10
+    - 11.2.11
+    - 11.2.2
+    - 11.2.3
+    - 11.2.4
+    - 11.2.5
+    - 11.2.6
+    - 11.2.7
+    - 11.2.8
+    - 11.2.9
+  - dependency-name: rxjs
+    versions:
+    - 6.6.3
+    - 6.6.6
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+    - 3.9.8
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: jquery
+    versions:
+    - 3.5.1
